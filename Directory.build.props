@@ -1,0 +1,14 @@
+<Project>
+
+  <PropertyGroup Condition="'$(IsPackable)' == 'true'">
+    <Company>Paprika</Company>
+    <Authors>Paprika</Authors>
+    <Copyright>Copyright © Paprika $([System.DateTime]::Now.Year)</Copyright>
+    <PackageReleaseNotes>$([System.IO.File]::ReadAllText("$(MSBuildProjectDirectory)/CHANGELOG.md"))</PackageReleaseNotes>
+  </PropertyGroup>
+
+  <ItemGroup Condition="'$(IsPackable)' == 'true'">
+    <None Include="$(MSBuildProjectDirectory)/CHANGELOG.md" Pack="true" PackagePath=""/>
+  </ItemGroup>
+
+</Project>
